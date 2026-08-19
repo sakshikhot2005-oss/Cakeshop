@@ -1,0 +1,52 @@
+export const allCakes = [
+  // Kids Theme
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-1st-Birthday-Boy.jpg',   name: '1st Birthday Boy',      category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-1st-Birthday-Girl.png',  name: '1st Birthday Girl',     category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-6-months.jpg',            name: '6 Months',              category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Cake-for-Twins.png',      name: 'Twins',                 category: 'Kids Theme', price: '₹1,399' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Jungle.jpg',              name: 'Jungle',                category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Superhero.jpg',           name: 'Superhero',             category: 'Kids Theme', price: '₹1,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Boss-Baby.jpg',           name: 'Boss Baby',             category: 'Kids Theme', price: '₹1,399' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Vehicles.jpg',            name: 'Vehicles',              category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Sports.jpg',              name: 'Sports',                category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Mickey-Mouse.jpg',        name: 'Mickey Mouse',          category: 'Kids Theme', price: '₹1,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Unicorn.jpg',             name: 'Unicorn',               category: 'Kids Theme', price: '₹1,599' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Baby-Shark.jpg',          name: 'Baby Shark',            category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Rainbow.jpg',             name: 'Rainbow',               category: 'Kids Theme', price: '₹1,399' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Cartoon.jpg',             name: 'Cartoon',               category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Baby-Theme.jpg',          name: 'Baby Theme',            category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Barbie.jpg',              name: 'Barbie',                category: 'Kids Theme', price: '₹1,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Books.jpg',               name: 'Books',                 category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Butterfly.jpg',           name: 'Butterfly',             category: 'Kids Theme', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Balloon.jpg',             name: 'Balloon',               category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Playstation.jpg',         name: 'Gaming',                category: 'Kids Theme', price: '₹1,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Fruits.jpg',              name: 'Fruits',                category: 'Kids Theme', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/06/Header-Painting.jpg',            name: 'Painting',              category: 'Kids Theme', price: '₹1,299' },
+
+  // Engagement
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/1526.jpg',                       name: 'Engagement Cake',       category: 'Engagement', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/1296.jpg',                       name: 'Designer Engagement',   category: 'Engagement', price: '₹1,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2025/04/3-tier-Engagement-cake-with-flowers.jpg', name: '3 Tier Floral Engagement', category: 'Engagement', price: '₹2,999' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/78.jpg',                         name: 'Classic Engagement',    category: 'Engagement', price: '₹1,199' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2025/12/3-Layer-Engagement-cream-cake-with-flowers.jpg', name: '3 Layer Cream Floral', category: 'Engagement', price: '₹2,499' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/80.jpg',                         name: 'Elegant Ring Cake',     category: 'Engagement', price: '₹1,399' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/1460.jpg',                       name: 'Couple Theme Cake',     category: 'Engagement', price: '₹1,599' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/77.jpg',                         name: 'Floral Engagement',     category: 'Engagement', price: '₹1,299' },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/76.jpg',                         name: 'Simple Engagement',     category: 'Engagement', price: '₹999'   },
+  { img: 'https://sweetmantra.in/wp-content/uploads/2024/07/75.jpg',                         name: 'Gold Engagement Cake',  category: 'Engagement', price: '₹1,699' },
+
+  // Anniversary
+  { img: 'https://i.pinimg.com/1200x/ce/ac/6d/ceac6d0c15b4fdbc95879182219fae9f.jpg',         name: 'Anniversary Cake',      category: 'Anniversary', price: '₹1,299' },
+  { img: 'https://i.pinimg.com/736x/4a/4f/be/4a4fbe4804b99da69fd8a685dd290c06.jpg',          name: 'Floral Anniversary',    category: 'Anniversary', price: '₹1,499' },
+  { img: 'https://i.pinimg.com/1200x/58/d7/d4/58d7d48add3b102bef557083b665c6f4.jpg',         name: 'Heart Tier Cake',       category: 'Anniversary', price: '₹1,999' },
+  { img: 'https://i.pinimg.com/736x/2d/21/ef/2d21ef1e0a9a9b54300752fd4ea1bf84.jpg',          name: 'Elegant Cream Cake',    category: 'Anniversary', price: '₹1,399' },
+  { img: 'https://i.pinimg.com/736x/8a/4b/45/8a4b45d2b54840cb778dc1b545369c4a.jpg',          name: 'Rose Gold Anniversary', category: 'Anniversary', price: '₹2,299' },
+  { img: 'https://i.pinimg.com/736x/2e/85/fd/2e85fd3d8df40d3ffa73da2fee711983.jpg',          name: 'Classic White Cake',    category: 'Anniversary', price: '₹1,799' },
+
+  // Naming Ceremony
+  { img: 'https://i.pinimg.com/1200x/e4/81/17/e4811772486b04125f932fc7c4ea2afb.jpg',         name: 'Naming Ceremony Cake',  category: 'Naming Ceremony', price: '₹1,199' },
+  { img: 'https://i.pinimg.com/1200x/36/fb/5d/36fb5dfdf0c8a7606e549c9be1549b4c.jpg',         name: 'Floral Naming Cake',    category: 'Naming Ceremony', price: '₹1,299' },
+  { img: 'https://i.pinimg.com/736x/cc/d6/17/ccd617eb6d7672ee345b66eb1c32e0a0.jpg',          name: 'Teddy Bear Cake',       category: 'Naming Ceremony', price: '₹1,599' },
+  { img: 'https://i.pinimg.com/736x/63/32/56/633256ff24d957bbabc232bea33f1556.jpg',          name: 'Butterfly Naming Cake', category: 'Naming Ceremony', price: '₹1,299' },
+  { img: 'https://i.pinimg.com/736x/1d/a0/7d/1da07de479e0395f2d2aeb689742d370.jpg',          name: 'Unicorn Baby Cake',     category: 'Naming Ceremony', price: '₹1,599' },
+]
