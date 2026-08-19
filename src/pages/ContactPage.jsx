@@ -12,14 +12,14 @@ export default function ContactPage() {
 
       {/* Hero Banner */}
       <div
-        className="relative w-full h-40 flex flex-col items-center justify-center overflow-hidden"
+        className="relative w-full h-32 sm:h-40 flex flex-col items-center justify-center overflow-hidden px-4 text-center"
         style={{ background: 'radial-gradient(ellipse at 20% 50%, #f5d0d8 0%, #e8b4c0 40%, #d4909f 100%)' }}
       >
         <div className="absolute w-24 h-24 rounded-full bg-yellow-100/60 blur-2xl top-2 left-24"></div>
         <div className="absolute w-20 h-20 rounded-full bg-yellow-100/50 blur-2xl top-6 left-96"></div>
         <div className="absolute w-16 h-16 rounded-full bg-white/30 blur-2xl bottom-4 right-40"></div>
         <div className="absolute w-28 h-28 rounded-full bg-yellow-50/40 blur-3xl top-0 right-24"></div>
-        <h1 className="font-serif text-[#3d1a1a] text-3xl font-semibold z-10">Contact Us</h1>
+        <h1 className="font-serif text-[#3d1a1a] text-2xl sm:text-3xl font-semibold z-10">Contact Us</h1>
         <p className="text-[#3d1a1a]/70 text-sm mt-1 z-10 font-sans">Home</p>
       </div>
 
@@ -66,9 +66,7 @@ export default function ContactPage() {
                 <svg className="w-4 h-4 text-[#e91e8c] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
-                <span>Chikodi</span>
-                <span>Nipani</span>
-                <span>Kognoli</span>
+                <span>Chikodi, Nipani & Kognoli</span>
 
               </div>
             </div>

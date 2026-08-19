@@ -34,7 +34,7 @@ export default function Footer() {
             <img
               src={firstLogo}
               alt="Dolcino First Logo"
-              className="h-36 w-48 object-contain"
+              className="h-28 sm:h-36 w-40 sm:w-48 object-contain"
             />
           </div>
 

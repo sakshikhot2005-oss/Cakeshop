@@ -94,20 +94,20 @@ export default function KidsThemePage() {
 
       {/* Hero Banner */}
       <div
-        className="relative w-full h-40 flex flex-col items-center justify-center overflow-hidden"
+        className="relative w-full h-32 sm:h-40 flex flex-col items-center justify-center overflow-hidden px-4 text-center"
         style={{ background: 'radial-gradient(ellipse at 20% 50%, #f5d0d8 0%, #e8b4c0 40%, #d4909f 100%)' }}
       >
         <div className="absolute w-24 h-24 rounded-full bg-yellow-100/60 blur-2xl top-2 left-24"></div>
         <div className="absolute w-20 h-20 rounded-full bg-yellow-100/50 blur-2xl top-6 left-96"></div>
         <div className="absolute w-16 h-16 rounded-full bg-white/30 blur-2xl bottom-4 right-40"></div>
         <div className="absolute w-28 h-28 rounded-full bg-yellow-50/40 blur-3xl top-0 right-24"></div>
-        <h1 className="font-serif text-[#3d1a1a] text-3xl font-semibold z-10">Kids Theme Cakes</h1>
+        <h1 className="font-serif text-[#3d1a1a] text-2xl sm:text-3xl font-semibold z-10">Kids Theme Cakes</h1>
         <p className="text-[#3d1a1a]/70 text-sm mt-1 z-10 font-sans">Home</p>
       </div>
 
       {/* Cards Grid */}
       <section className="py-8 sm:py-12 px-4 sm:px-10 bg-[#f9f9f9]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
           {kidsCakes.map((cake, i) => (
             <CakeCard key={i} img={cake.img} name={cake.name} />
           ))}

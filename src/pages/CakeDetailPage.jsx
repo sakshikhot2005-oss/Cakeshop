@@ -112,7 +112,7 @@ Please confirm this order. Thank you!`
           {/* Main Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 bg-white rounded-2xl p-4 sm:p-8 shadow-md mb-8">
             {/* Left - Image */}
-            <div className="flex items-center justify-center bg-gray-50 rounded-xl p-8">
+            <div className="flex items-center justify-center bg-gray-50 rounded-xl p-4 sm:p-8 min-h-[260px] sm:min-h-0">
               <img
                 src={displayCake.img}
                 alt={displayCake.name}
@@ -130,7 +130,7 @@ Please confirm this order. Thank you!`
                 <span className="text-[#e91e8c] text-xs uppercase tracking-widest font-semibold">
                   {displayCake.category}
                 </span>
-                <h1 className="font-serif text-3xl sm:text-4xl text-gray-800 mt-2 mb-3">{displayCake.name}</h1>
+                <h1 className="font-serif text-2xl sm:text-4xl break-words text-gray-800 mt-2 mb-3">{displayCake.name}</h1>
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
                   <p className="text-2xl font-bold text-[#e91e8c]">{displayCake.price}</p>
                   <div className="flex items-center gap-1">
@@ -267,7 +267,7 @@ Please confirm this order. Thank you!`
               </div>
               <div className="flex-1">
                 {[5, 4, 3, 2, 1].map((stars) => (
-                  <div key={stars} className="flex items-center gap-4 mb-2">
+                    <div key={stars} className="flex items-center gap-2 sm:gap-4 mb-2">
                     <span className="text-gray-600 text-sm w-20">{stars} ★</span>
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
                       <div

@@ -198,8 +198,8 @@ export default function Navbar() {
             Dessert Tables
             <span className="bg-[#e91e8c] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-sm leading-none">NEW</span>
           </a>
-          <a href="/about" className="hover:text-[#e91e8c] transition-colors whitespace-nowrap">About us</a>
-          <a href="/contact" className="hover:text-[#e91e8c] transition-colors whitespace-nowrap">Contact us</a>
+          <button type="button" onClick={() => navigate('/about')} className="hover:text-[#e91e8c] transition-colors whitespace-nowrap">About us</button>
+          <button type="button" onClick={() => navigate('/contact')} className="hover:text-[#e91e8c] transition-colors whitespace-nowrap">Contact us</button>
         </div>
 
         {/* Search bar with live dropdown */}
