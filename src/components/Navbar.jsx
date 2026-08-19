@@ -90,6 +90,7 @@ const megaMenu = {
 export default function Navbar() {
   const [searchVal, setSearchVal] = useState('')
   const [megaOpen, setMegaOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const { cartItems, cartCount, wishlistCount } = useCart()
@@ -142,14 +143,14 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      <nav className="bg-white shadow-sm px-6 py-3 flex items-center justify-between gap-4">
+      <nav className="bg-white shadow-sm px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
 
         {/* Logo */}
         <div className="flex items-center gap-3 min-w-fit">
           <img
             src={secondLogo}
             alt="Dolcino Cakes Logo"
-            className="h-20 w-auto object-contain"
+            className="h-14 sm:h-20 w-auto object-contain"
           />
           <div className="leading-tight">
             <div className="text-2xl font-bold font-serif leading-none text-[#e91e8c]"></div>
@@ -158,7 +159,7 @@ export default function Navbar() {
         </div>
 
         {/* Nav links */}
-        <div className="flex items-center gap-6 text-sm text-gray-700 font-medium">
+        <div className="hidden lg:flex items-center gap-6 text-sm text-gray-700 font-medium">
 
           {/* Custom Cakes — mega menu trigger */}
           <div className="relative">
@@ -202,8 +203,8 @@ export default function Navbar() {
         </div>
 
         {/* Search bar with live dropdown */}
-        <div ref={searchRef} className="relative">
-          <form onSubmit={handleSearch} className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-gray-50 min-w-[200px]">
+        <div ref={searchRef} className="relative order-3 w-full lg:order-none lg:w-auto">
+            <form onSubmit={handleSearch} className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-gray-50 w-full lg:w-[220px]">
             <input
               type="text"
               placeholder="Search Cakes"
@@ -271,7 +272,7 @@ export default function Navbar() {
         </div>
 
         {/* Order Now button */}
-        <a href={getWhatsAppUrl('Hello! I would like to place an order for a cake.')} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-500 hover:bg-green-600 transition-colors text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap shadow">
+        <a href={getWhatsAppUrl('Hello! I would like to place an order for a cake.')} target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-2 bg-green-500 hover:bg-green-600 transition-colors text-white text-sm font-semibold px-4 lg:px-5 py-2.5 rounded-full whitespace-nowrap shadow">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L.057 23.571a.75.75 0 00.921.921l5.772-1.47A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.685-.523-5.21-1.432l-.374-.22-3.425.873.888-3.335-.242-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
@@ -280,7 +281,7 @@ export default function Navbar() {
         </a>
 
         {/* Cart button with dropdown */}
-        <div ref={cartRef} className="relative">
+        <div ref={cartRef} className="relative ml-auto lg:ml-0">
           <button
             onClick={() => setCartOpen(o => !o)}
             className="relative flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 hover:border-[#e91e8c] hover:text-[#e91e8c] text-gray-600 transition-all"
@@ -298,7 +299,7 @@ export default function Navbar() {
 
           {/* Cart dropdown panel */}
           {cartOpen && (
-            <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
+            <div className="absolute right-0 top-full mt-2 w-[min(20rem,calc(100vw-2rem))] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
               <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                 <span className="font-serif text-gray-800 font-semibold text-sm">
                   Cart ({cartCount} {cartCount === 1 ? 'item' : 'items'})
@@ -363,7 +364,28 @@ export default function Navbar() {
             </span>
           )}
         </button>
+
+        <button
+          type="button"
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(open => !open)}
+          className="flex lg:hidden items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-600"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+          </svg>
+        </button>
       </nav>
+
+      {mobileOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-white border-t border-gray-100 shadow-xl px-4 py-4 space-y-2 text-sm text-gray-700">
+          <button onClick={() => { setMegaOpen(open => !open); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">Custom Cakes</button>
+          <a href="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">About us</a>
+          <a href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">Contact us</a>
+          <a href={getWhatsAppUrl('Hello! I would like to place an order for a cake.')} target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center justify-center gap-2 bg-green-500 text-white font-semibold px-4 py-3 rounded-full">Order Now!</a>
+        </div>
+      )}
 
       {/* Mega Menu Dropdown */}
       {megaOpen && (

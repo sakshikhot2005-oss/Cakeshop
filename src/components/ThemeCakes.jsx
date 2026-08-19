@@ -61,19 +61,19 @@ export default function ThemeCakes() {
   }
 
   return (
-    <section className="bg-[#f0f4f8] py-14 px-10">
-      <h2 className="text-center font-serif text-3xl text-[#e91e8c] font-normal mb-10 tracking-wide">
+    <section className="bg-[#f0f4f8] py-10 sm:py-14 px-4 sm:px-10">
+      <h2 className="text-center font-serif text-2xl sm:text-3xl text-[#e91e8c] font-normal mb-8 sm:mb-10 tracking-wide">
         Customised Theme Cakes
       </h2>
 
-      <div className="grid grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-6xl mx-auto">
         {cakes.map((cake, i) => (
           <div
             key={i}
             onClick={() => handleCakeClick(cake.label)}
-            className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer lg:hover:scale-105 transition-transform duration-300"
           >
-            <div className="h-64 bg-white flex items-center justify-center">
+            <div className="h-40 sm:h-64 bg-white flex items-center justify-center">
               <img
                 src={cake.img}
                 alt={cake.label}
@@ -82,8 +82,8 @@ export default function ThemeCakes() {
               />
             </div>
             <div className="flex flex-col items-center gap-3 py-4 px-4">
-              <h3 className="text-gray-800 font-serif text-lg font-semibold">{cake.label}</h3>
-              <p className="text-[#e91e8c] font-bold text-lg font-sans">{cake.price}</p>
+              <h3 className="text-gray-800 font-serif text-sm sm:text-lg font-semibold text-center">{cake.label}</h3>
+              <p className="text-[#e91e8c] font-bold text-base sm:text-lg font-sans">{cake.price}</p>
             </div>
           </div>
         ))}

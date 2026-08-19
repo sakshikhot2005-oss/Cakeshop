@@ -17,6 +17,15 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
+  img {
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   #root {
     width: 100%;
     max-width: 100%;

@@ -28,14 +28,6 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
 
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goToNext()
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [current])
-
   const goToNext = () => {
     if (animating) return
     setAnimating(true)
@@ -44,6 +36,16 @@ export default function HeroSection() {
       setAnimating(false)
     }, 400)
   }
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnimating(true)
+      setCurrent(prev => (prev + 1) % slides.length)
+      setTimeout(() => setAnimating(false), 400)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
 
   const goToPrev = () => {
     if (animating) return
@@ -67,9 +69,8 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex items-center transition-all duration-700"
+      className="relative w-full min-h-[560px] sm:min-h-[620px] overflow-hidden flex items-center transition-all duration-700"
       style={{
-        minHeight: '620px',
         background: slide.bg,
         transition: 'background 0.7s ease',
       }}
@@ -80,7 +81,7 @@ export default function HeroSection() {
       <div className="absolute w-24 h-24 rounded-full bg-white/10 blur-2xl bottom-16 left-72 pointer-events-none"></div>
 
       {/* Left — text content */}
-      <div className="relative z-10 flex flex-col justify-center pl-16 pr-8 py-16 max-w-[480px]">
+      <div className="relative z-10 flex flex-col justify-center px-6 sm:pl-16 sm:pr-8 py-16 max-w-[480px] w-full">
         <h1 className="font-serif text-white text-4xl md:text-5xl font-semibold leading-tight mb-5 drop-shadow">
           Customised Cake<br />
           For Any Occasion<br />
@@ -112,7 +113,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right — cake image with fade transition */}
-      <div className="absolute right-0 top-0 bottom-0 w-[60%] pointer-events-none overflow-hidden">
+      <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[60%] pointer-events-none overflow-hidden opacity-40 sm:opacity-100">
         <img
           key={current}
           src={slide.img}
@@ -127,7 +128,7 @@ export default function HeroSection() {
       {/* Prev / Next arrow buttons */}
       <button
         onClick={goToPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white w-9 h-9 rounded-full flex items-center justify-center transition-all shadow"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white/40 backdrop-blur-sm text-white w-9 h-9 rounded-full flex items-center justify-center transition-all shadow"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
