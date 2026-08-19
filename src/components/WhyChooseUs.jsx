@@ -62,10 +62,10 @@ export default function WhyChooseUs() {
         ))}
       </div>
 
-      {/* View All Cakes Button */}
+      {/* Buy Now Button */}
       <div className="flex justify-center">
         <a href="/search" className="bg-[#e91e8c] text-white text-base font-semibold px-8 py-3 rounded-full hover:bg-[#d41872] transition-colors shadow-md hover:shadow-lg font-sans">
-          View All Cakes
+          Buy Now
         </a>
       </div>
     </section>

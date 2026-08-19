@@ -79,7 +79,7 @@ function CakeCard({ img, name, price = '' }) {
           onClick={() => navigate(`/cake/${name.toLowerCase().replace(/\s+/g, '-')}`)}
           className="border border-[#e91e8c] text-[#e91e8c] text-xs px-6 py-1.5 rounded-sm hover:bg-[#e91e8c] hover:text-white transition-colors font-sans"
         >
-          View All Cakes
+          Buy Now
         </button>
       </div>
     </div>

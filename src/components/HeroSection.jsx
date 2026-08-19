@@ -93,7 +93,7 @@ export default function HeroSection() {
         </p>
 
         <button className="self-start bg-[#e91e8c] hover:bg-[#c2185b] transition-colors text-white text-sm font-semibold px-8 py-3 rounded-full shadow-lg">
-          View All Cakes
+          Buy Now
         </button>
 
         {/* Dot indicators */}

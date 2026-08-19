@@ -17,7 +17,11 @@ export default function CakeDetailPage() {
   const [selectedFlavor, setSelectedFlavor] = useState('Chocolate')
   const [cakeMessage, setCakeMessage] = useState('')
   const [deliveryAddress, setDeliveryAddress] = useState('')
+  const [deliveryDate, setDeliveryDate] = useState('')
+  const [deliveryTime, setDeliveryTime] = useState('')
   const { addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+
+  const today = new Date().toISOString().split('T')[0]
 
   // Find cake by name
   const cake = allCakes.find(c => c.name.toLowerCase().replace(/\s+/g, '-') === cakeName?.toLowerCase())
@@ -57,6 +61,11 @@ export default function CakeDetailPage() {
       return
     }
 
+    if (!deliveryDate || !deliveryTime) {
+      alert('Please select delivery date and time')
+      return
+    }
+
     // Create order message for WhatsApp
     const orderMessage = `🎂 *New Order - Cake Shop*
 
@@ -72,7 +81,8 @@ Message on Cake: ${cakeMessage || 'No message'}
 Delivery Address: ${deliveryAddress}
 SKU: ${displayCake.name.toLowerCase().replace(/\s+/g, '')}buttsk
 
-*Earliest Delivery:* Today ✅
+*Delivery Date:* ${deliveryDate}
+*Delivery Time:* ${deliveryTime}
 
 Please confirm this order. Thank you!`
 
@@ -208,17 +218,39 @@ Please confirm this order. Thank you!`
                 <p className="text-orange-500 text-sm mt-1">Available in limited cities*</p>
               </div>
 
+              {/* Delivery date and time */}
+              <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="delivery-date" className="block text-lg font-semibold text-gray-800 mb-2">
+                    Delivery Date *
+                  </label>
+                  <input
+                    id="delivery-date"
+                    type="date"
+                    min={today}
+                    value={deliveryDate}
+                    onChange={(e) => setDeliveryDate(e.target.value)}
+                    className="w-full min-w-0 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:border-[#e91e8c] bg-white"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="delivery-time" className="block text-lg font-semibold text-gray-800 mb-2">
+                    Delivery Time *
+                  </label>
+                  <input
+                    id="delivery-time"
+                    type="time"
+                    value={deliveryTime}
+                    onChange={(e) => setDeliveryTime(e.target.value)}
+                    className="w-full min-w-0 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:border-[#e91e8c] bg-white"
+                  />
+                </div>
+              </div>
+
               {/* SKU Number */}
               <div className="mb-4 pb-4 border-b border-gray-200">
                 <h3 className="text-sm font-semibold text-gray-800 mb-1">SKU Number</h3>
                 <p className="text-gray-600">{displayCake.name.toLowerCase().replace(/\s+/g, '')}buttsk</p>
-              </div>
-
-              {/* Delivery Info */}
-              <div className="mb-6 pb-6 border-b border-gray-200">
-                <p className="text-gray-700 font-semibold">
-                  🕐 Earliest Delivery: <span className="text-red-600">Today</span>
-                </p>
               </div>
 
               {/* Action Buttons */}

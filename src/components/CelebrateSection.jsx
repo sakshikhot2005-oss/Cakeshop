@@ -15,7 +15,7 @@ export default function CelebrateSection() {
             Cakes That<br />Celebrate Life
           </h2>
           <a href="/search" className="inline-block mt-3 bg-wineDark text-cream text-[10px] tracking-widest uppercase px-4 py-1.5 rounded-full font-sans hover:bg-wine transition-colors">
-            View All Cakes
+            Buy Now
           </a>
         </div>
         {/* Thumbnail row */}
