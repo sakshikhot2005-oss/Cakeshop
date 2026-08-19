@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 export default function AboutSection({ showReadMore = true }) {
   const navigate = useNavigate()
   return (
-    <section className="bg-white py-16 px-10">
+    <section className="bg-white py-10 sm:py-16 px-4 sm:px-10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
 
         {/* Left — Text content */}

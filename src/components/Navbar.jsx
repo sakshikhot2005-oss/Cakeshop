@@ -390,7 +390,7 @@ export default function Navbar() {
       {/* Mega Menu Dropdown */}
       {megaOpen && (
         <div className="absolute top-full left-0 right-0 z-50 bg-[#1a0505] shadow-2xl border-t-2 border-[#e91e8c]">
-          <div className="max-w-screen-xl mx-auto px-8 py-8 grid grid-cols-5 gap-6">
+          <div className="max-h-[70vh] overflow-y-auto max-w-screen-xl mx-auto px-4 sm:px-8 py-6 sm:py-8 grid grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
             {Object.entries(megaMenu).map(([category, items]) => (
               <div key={category}>
                 {/* Category heading */}

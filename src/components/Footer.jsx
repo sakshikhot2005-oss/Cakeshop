@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1a0a0a] text-white">
       {/* Main footer content */}
-      <div className="max-w-6xl mx-auto px-10 py-14 grid grid-cols-3 gap-12">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-10 sm:py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
 
         {/* Left — Logo + About */}
         <div className="flex flex-col gap-5">
@@ -106,7 +106,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-800 px-10 py-4 flex items-center justify-between max-w-full">
+      <div className="border-t border-gray-800 px-6 sm:px-10 py-4 flex flex-col sm:flex-row gap-3 items-center justify-between max-w-full text-center sm:text-left">
         <p className="text-gray-500 text-xs font-sans">
           ©2026. Dolcino Cakes. All Rights Reserved
         </p>

@@ -99,7 +99,7 @@ Please confirm this order. Thank you!`
       <TopBar />
       <Navbar />
 
-      <section className="py-12 px-10 bg-[#f9f9f9]">
+      <section className="py-8 sm:py-12 px-4 sm:px-10 bg-[#f9f9f9]">
         <div className="max-w-6xl mx-auto">
           {/* Breadcrumb */}
           <button
@@ -110,7 +110,7 @@ Please confirm this order. Thank you!`
           </button>
 
           {/* Main Content */}
-          <div className="grid grid-cols-2 gap-12 bg-white rounded-2xl p-8 shadow-md mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 bg-white rounded-2xl p-4 sm:p-8 shadow-md mb-8">
             {/* Left - Image */}
             <div className="flex items-center justify-center bg-gray-50 rounded-xl p-8">
               <img
@@ -130,8 +130,8 @@ Please confirm this order. Thank you!`
                 <span className="text-[#e91e8c] text-xs uppercase tracking-widest font-semibold">
                   {displayCake.category}
                 </span>
-                <h1 className="font-serif text-4xl text-gray-800 mt-2 mb-3">{displayCake.name}</h1>
-                <div className="flex items-center gap-4 mb-4">
+                <h1 className="font-serif text-3xl sm:text-4xl text-gray-800 mt-2 mb-3">{displayCake.name}</h1>
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
                   <p className="text-2xl font-bold text-[#e91e8c]">{displayCake.price}</p>
                   <div className="flex items-center gap-1">
                     <span className="text-yellow-400">★★★★★</span>
@@ -222,7 +222,7 @@ Please confirm this order. Thank you!`
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <button
                   onClick={handleBuyNow}
                   className="flex-1 py-3 rounded-lg font-bold transition-all text-white text-lg bg-[#25D366] hover:bg-[#1da851] flex items-center justify-center gap-2"
@@ -257,9 +257,9 @@ Please confirm this order. Thank you!`
           </div>
 
           {/* Ratings & Reviews Section */}
-          <div className="bg-white rounded-2xl p-8 shadow-md mb-8">
+          <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-md mb-8">
             <h2 className="text-2xl font-serif text-gray-800 mb-6">Ratings & Reviews</h2>
-            <div className="flex items-center gap-8 mb-8">
+            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-8">
               <div className="text-center">
                 <p className="text-5xl font-bold text-gray-800">5</p>
                 <div className="flex justify-center text-yellow-400 text-2xl my-2">★★★★★</div>
@@ -288,7 +288,7 @@ Please confirm this order. Thank you!`
           {categoryCakes.length > 1 && (
             <div>
               <h2 className="text-2xl font-serif text-gray-800 mb-6">Other {displayCake.category} Cakes</h2>
-              <div className="grid grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                 {categoryCakes.map((c, i) => (
                   <div
                     key={i}

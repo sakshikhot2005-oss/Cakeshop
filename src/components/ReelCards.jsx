@@ -28,7 +28,7 @@ export default function ReelCards() {
   return (
     <section className="py-12 bg-[#f9f9f9]">
       <div className="w-full mx-auto px-6">
-        <div className="grid grid-cols-4 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-start">
           {reels.map((url, i) => (
             <div key={i} className="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
               {/* Logo — small, top-left */}

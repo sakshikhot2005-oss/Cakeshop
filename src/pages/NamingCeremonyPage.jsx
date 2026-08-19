@@ -95,8 +95,8 @@ export default function NamingCeremonyPage() {
       </div>
 
       {/* Cards Grid — 4 per row */}
-      <section className="py-12 px-10 bg-[#f9f9f9]">
-        <div className="max-w-6xl mx-auto grid grid-cols-4 gap-7">
+      <section className="py-8 sm:py-12 px-4 sm:px-10 bg-[#f9f9f9]">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
           {namingCakes.map((cake, i) => (
             <CakeCard key={i} img={cake.img} name={cake.name} price={cake.price} />
           ))}

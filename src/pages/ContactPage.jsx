@@ -24,8 +24,8 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Info + Image Section */}
-      <section className="py-16 px-10 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+      <section className="py-10 sm:py-16 px-4 sm:px-10 bg-white">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 sm:gap-16">
 
           {/* Left — Text */}
           <div className="flex-1">
@@ -33,7 +33,7 @@ export default function ContactPage() {
 
             <p className="text-gray-600 text-sm leading-8 text-justify font-sans mb-6">
               Want to order the best theme based cake. Please send a whatsapp message to
-              7259910059 and give us a couple of hours to respond. We will send you an enquiry
+              8105931021 and give us a couple of hours to respond. We will send you an enquiry
               form wherein you can fill out the order details. Availability, delivery, design,
               flavor, cost will then be discussed on chat.
             </p>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
                 <span>Chikodi</span>
-                                <span>Nipani</span>
+                <span>Nipani</span>
                 <span>Kognoli</span>
 
               </div>

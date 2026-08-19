@@ -152,7 +152,7 @@ export default function SearchPage() {
       </div>
 
       {/* Cake Results */}
-      <section className="py-12 px-10 bg-[#f9f9f9]">
+      <section className="py-8 sm:py-12 px-4 sm:px-10 bg-[#f9f9f9]">
         <div className="max-w-6xl mx-auto">
           {results.length === 0 ? (
             <div className="text-center mt-4 mb-8">
@@ -168,7 +168,7 @@ export default function SearchPage() {
                   <>Showing <span className="text-[#e91e8c] font-semibold">{results.length}</span> cakes</>
                 )}
               </p>
-              <div className="grid grid-cols-4 gap-7 mb-12">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7 mb-8 sm:mb-12">
                 {results.map((cake, i) => (
                   <CakeCard key={i} {...cake} />
                 ))}
@@ -179,7 +179,7 @@ export default function SearchPage() {
           {/* Instagram Reels Section */}
           <div className="mt-8">
             <h2 className="font-serif text-2xl text-[#e91e8c] mb-6 text-center">Our Cake Reels</h2>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {reels.map((reel, i) => (
                 <ReelCard key={i} url={reel.url} thumb={reel.thumb} />
               ))}

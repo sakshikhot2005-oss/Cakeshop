@@ -37,25 +37,25 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-[#f0f4f8] py-16 px-10">
+    <section className="bg-[#f0f4f8] py-10 sm:py-16 px-4 sm:px-10">
       {/* Heading */}
-      <h2 className="text-center font-serif text-3xl text-[#e91e8c] font-normal mb-12 tracking-wide">
+      <h2 className="text-center font-serif text-2xl sm:text-3xl text-[#e91e8c] font-normal mb-8 sm:mb-12 tracking-wide">
         Why Customers Choose Us ?
       </h2>
 
       {/* Cards — full width, equal spacing */}
-      <div className="grid grid-cols-4 gap-8 max-w-7xl mx-auto mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12">
         {features.map((f, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center gap-8 px-12 py-16 min-h-[320px] hover:shadow-md transition-shadow"
+            className="bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center gap-4 sm:gap-8 px-3 sm:px-12 py-8 sm:py-16 min-h-[190px] sm:min-h-[320px] hover:shadow-md transition-shadow"
           >
             {/* Icon circle */}
-            <div className="w-28 h-28 rounded-full bg-[#f4a7b9] flex items-center justify-center flex-shrink-0">
-              <span className="[&>svg]:w-14 [&>svg]:h-14">{f.icon}</span>
+            <div className="w-16 h-16 sm:w-28 sm:h-28 rounded-full bg-[#f4a7b9] flex items-center justify-center flex-shrink-0">
+              <span className="[&>svg]:w-8 [&>svg]:h-8 sm:[&>svg]:w-14 sm:[&>svg]:h-14">{f.icon}</span>
             </div>
             {/* Label */}
-            <p className="text-gray-600 text-lg text-center leading-snug font-sans">
+            <p className="text-gray-600 text-sm sm:text-lg text-center leading-snug font-sans">
               {f.label}
             </p>
           </div>
