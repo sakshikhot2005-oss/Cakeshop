@@ -321,7 +321,7 @@ export default function Navbar() {
 
           {/* Cart dropdown panel */}
           {cartOpen && (
-            <div className="absolute right-0 top-full mt-2 w-[min(20rem,calc(100vw-2rem))] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
+            <div className="absolute right-0 sm:right-0 top-full mt-2 w-[min(20rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 max-sm:fixed max-sm:left-1/2 max-sm:right-auto max-sm:-translate-x-1/2 max-sm:top-[7.5rem] max-sm:mt-0">
               <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                 <span className="font-serif text-gray-800 font-semibold text-sm">
                   Cart ({cartCount} {cartCount === 1 ? 'item' : 'items'})
@@ -415,7 +415,7 @@ export default function Navbar() {
           </button>
 
           {wishlistOpen && (
-            <div className="absolute right-0 top-full mt-2 w-[min(20rem,calc(100vw-2rem))] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
+            <div className="absolute right-0 sm:right-0 top-full mt-2 w-[min(20rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 max-sm:fixed max-sm:left-1/2 max-sm:right-auto max-sm:-translate-x-1/2 max-sm:top-[7.5rem] max-sm:mt-0">
               <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                 <span className="font-serif text-gray-800 font-semibold text-sm">
                   My Wishlist ({wishlistCount})
