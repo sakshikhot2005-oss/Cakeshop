@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { allCakes } from '../data/allCakes'
 import { cakeFlavors } from '../data/cakeFlavors'
 import { useCart } from '../context/CartContext'
-import { shareOrderWithImages } from '../data/contact'
+import { formatDeliveryTime, shareOrderWithImages } from '../data/contact'
 
 export default function CakeDetailPage() {
   const { cakeName } = useParams()
@@ -80,7 +80,7 @@ Message on Cake: ${cakeMessage || 'No message'}
 SKU: ${displayCake.name.toLowerCase().replace(/\s+/g, '')}buttsk
 
 *Delivery Date:* ${deliveryDate}
-*Delivery Time:* ${deliveryTime}
+*Delivery Time:* ${formatDeliveryTime(deliveryTime)}
 
 Please confirm this order. Thank you!`
 
@@ -234,6 +234,11 @@ Please confirm this order. Thank you!`
                     onChange={(e) => setDeliveryTime(e.target.value)}
                     className="w-full min-w-0 border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:border-[#e91e8c] bg-white"
                   />
+                  {deliveryTime && (
+                    <p className="mt-2 text-sm font-semibold text-[#e91e8c]" aria-live="polite">
+                      Selected time: {formatDeliveryTime(deliveryTime)}
+                    </p>
+                  )}
                 </div>
               </div>
 

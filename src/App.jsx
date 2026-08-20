@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import TopBar from './components/TopBar'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -17,6 +17,16 @@ import SearchPage from './pages/SearchPage'
 import CartPage from './pages/CartPage'
 import CakeDetailPage from './pages/CakeDetailPage'
 import SplashScreen from './components/SplashScreen'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [pathname])
+
+  return null
+}
 
 function HomePage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -40,19 +50,23 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/kids-theme" element={<KidsThemePage />} />
-      <Route path="/cake/kids-theme" element={<KidsThemePage />} />
-      <Route path="/cake/:cakeName" element={<CakeDetailPage />} />
-      <Route path="/engagement" element={<EngagementPage />} />
-      <Route path="/anniversary" element={<AnniversaryPage />} />
-      <Route path="/naming-ceremony" element={<NamingCeremonyPage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/cart" element={<CartPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/kids-theme" element={<KidsThemePage />} />
+        <Route path="/cake/kids-theme" element={<KidsThemePage />} />
+        <Route path="/cake/:cakeName" element={<CakeDetailPage />} />
+        <Route path="/engagement" element={<EngagementPage />} />
+        <Route path="/anniversary" element={<AnniversaryPage />} />
+        <Route path="/naming-ceremony" element={<NamingCeremonyPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   )
 }
 

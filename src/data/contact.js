@@ -1,5 +1,16 @@
 export const WHATSAPP_NUMBER = '918105931021'
 
+export function formatDeliveryTime(time) {
+  if (!time) return ''
+
+  const [hours, minutes] = time.split(':').map(Number)
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) return time
+
+  const period = hours >= 12 ? 'PM' : 'AM'
+  const displayHour = hours % 12 || 12
+  return `${displayHour}:${String(minutes).padStart(2, '0')} ${period}`
+}
+
 export function getWhatsAppUrl(message = '') {
   const query = message ? `&text=${encodeURIComponent(message)}` : ''
   return `whatsapp://send?phone=${WHATSAPP_NUMBER}${query}`

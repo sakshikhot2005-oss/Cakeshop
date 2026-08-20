@@ -1,7 +1,6 @@
 import TopBar from '../components/TopBar'
 import Navbar from '../components/Navbar'
 import AboutSection from '../components/AboutSection'
-import ReelCards from '../components/ReelCards'
 import Footer from '../components/Footer'
 
 export default function AboutPage() {
@@ -25,9 +24,6 @@ export default function AboutPage() {
 
       {/* About Section */}
       <AboutSection showReadMore={false} />
-
-      {/* Reel Cards — above footer */}
-      <ReelCards />
 
       <Footer />
     </div>

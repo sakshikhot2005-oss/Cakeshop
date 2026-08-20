@@ -5,60 +5,6 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { allCakes } from '../data/allCakes'
 import { useCart } from '../context/CartContext'
-import secondLogo from '../assets/secondlogo.jpg'
-
-const reels = [
-  {
-    url: 'https://www.instagram.com/reel/DOZJs5nE1MY/?igsh=MXY2NmQ0aXVqcGsxeA==',
-    thumb: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&auto=format&fit=crop&q=80',
-  },
-  {
-    url: 'https://www.instagram.com/reel/DBa46x2hu6J/?igsh=Z29tYWtjYXlxbGFm',
-    thumb: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop&q=80',
-  },
-  {
-    url: 'https://www.instagram.com/reel/C_TCPjxBd94/?igsh=Y3JkcmJwMjV5OHVz',
-    thumb: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=400&auto=format&fit=crop&q=80',
-  },
-  {
-    url: 'https://www.instagram.com/reel/C5iT1-qPx-r/?igsh=MTh3N2dyeXY1aGh6',
-    thumb: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&auto=format&fit=crop&q=80',
-  },
-]
-
-function ReelCard({ url, thumb }) {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-shadow group"
-    >
-      {/* Top bar — logo + label */}
-      <div className="flex items-center gap-2 px-3 py-2 border-b border-gray-100">
-        <img src={secondLogo} alt="logo" className="h-7 w-auto object-contain" />
-        <span className="text-[11px] text-gray-500 font-sans">Original audio</span>
-      </div>
-
-      {/* Video thumbnail with play button */}
-      <div className="relative flex-1 bg-gray-900 overflow-hidden h-52 sm:h-[220px]">
-        <img
-          src={thumb}
-          alt="reel thumbnail"
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-        />
-        {/* Play button overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center border-2 border-white/70 group-hover:scale-110 transition-transform">
-            <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </a>
-  )
-}
 
 function CakeCard({ img, name, price, category }) {
   const navigate = useNavigate()
@@ -176,15 +122,6 @@ export default function SearchPage() {
             </>
           )}
 
-          {/* Instagram Reels Section */}
-          <div className="mt-8">
-            <h2 className="font-serif text-2xl text-[#e91e8c] mb-6 text-center">Our Cake Reels</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {reels.map((reel, i) => (
-                <ReelCard key={i} url={reel.url} thumb={reel.thumb} />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

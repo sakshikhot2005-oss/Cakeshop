@@ -5,17 +5,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --cake-pink: #e91e8c;
+    --cake-rose: #b94d69;
+    --cake-ink: #2b1719;
+    --cake-cream: #fffaf7;
+  }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
 
   body {
-    background: #fff;
+    background: var(--cake-cream);
     overflow-x: hidden;
     min-width: 320px;
     font-family: 'Inter', system-ui, sans-serif;
+    color: var(--cake-ink);
   }
 
   img {
@@ -25,6 +34,13 @@
   button,
   a {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline: 3px solid rgba(233, 30, 140, 0.35);
+    outline-offset: 3px;
   }
 
   button,
@@ -63,6 +79,48 @@
 }
 
 @layer utilities {
+  .cake-page {
+    background:
+      radial-gradient(circle at 5% 8%, rgba(255, 220, 226, 0.35), transparent 25rem),
+      var(--cake-cream);
+  }
+
+  .cake-hero {
+    box-shadow: inset 0 -1px rgba(96, 39, 47, 0.12);
+  }
+
+  .cake-image-frame {
+    box-shadow: 0 18px 45px rgba(92, 40, 48, 0.14);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+  }
+
+  .cake-image-frame:hover {
+    transform: translateY(-4px) rotate(0.5deg);
+    box-shadow: 0 24px 55px rgba(92, 40, 48, 0.2);
+  }
+
+  @media (max-width: 639px) {
+    .cake-image-frame:hover {
+      transform: none;
+    }
+
+    .mobile-menu-panel {
+      max-height: calc(100svh - 7rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
