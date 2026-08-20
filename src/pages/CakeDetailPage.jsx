@@ -11,15 +11,12 @@ import { getWhatsAppUrl } from '../data/contact'
 export default function CakeDetailPage() {
   const { cakeName } = useParams()
   const navigate = useNavigate()
-  const [wishlisted, setWishlisted] = useState(false)
-  const [carted, setCarted] = useState(false)
   const [selectedWeight, setSelectedWeight] = useState('0.5 Kg')
   const [selectedFlavor, setSelectedFlavor] = useState('Chocolate')
   const [cakeMessage, setCakeMessage] = useState('')
-  const [deliveryAddress, setDeliveryAddress] = useState('')
   const [deliveryDate, setDeliveryDate] = useState('')
   const [deliveryTime, setDeliveryTime] = useState('')
-  const { addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+  const { cartItems, wishlistItems, addToCart, addToWishlist, removeFromWishlist } = useCart()
 
   const today = new Date().toISOString().split('T')[0]
 
@@ -33,6 +30,14 @@ export default function CakeDetailPage() {
 
   // If viewing a category, show the first cake as featured
   const displayCake = cake || (categoryCakes.length > 0 ? categoryCakes[0] : null)
+
+  const cartItem = displayCake ? {
+    ...displayCake,
+    weight: selectedWeight,
+    flavor: selectedFlavor,
+  } : null
+  const carted = cartItem ? cartItems.some(item => item?.name === cartItem.name) : false
+  const wishlisted = displayCake ? wishlistItems.some(item => item?.name === displayCake.name) : false
 
   if (!displayCake) {
     return (
@@ -55,12 +60,6 @@ export default function CakeDetailPage() {
   }
 
   const handleBuyNow = () => {
-    // Validate delivery location
-    if (!deliveryAddress.trim()) {
-      alert('Please enter delivery address')
-      return
-    }
-
     if (!deliveryDate || !deliveryTime) {
       alert('Please select delivery date and time')
       return
@@ -78,7 +77,6 @@ Serving: ${servingInfo[selectedWeight]}
 
 *Order Details:*
 Message on Cake: ${cakeMessage || 'No message'}
-Delivery Address: ${deliveryAddress}
 SKU: ${displayCake.name.toLowerCase().replace(/\s+/g, '')}buttsk
 
 *Delivery Date:* ${deliveryDate}
@@ -91,8 +89,13 @@ Please confirm this order. Thank you!`
   }
 
   const handleWishlist = () => {
-    if (wishlisted) { removeFromWishlist(); setWishlisted(false) }
-    else { addToWishlist(); setWishlisted(true) }
+    if (wishlisted) removeFromWishlist(displayCake)
+    else addToWishlist(displayCake)
+  }
+
+  const handleCart = () => {
+    if (!cartItem) return
+    if (!carted) addToCart(cartItem)
   }
 
   const weightOptions = ['0.5 Kg', '1 Kg', '1.5 Kg', '2 Kg', '4 Kg']
@@ -205,19 +208,6 @@ Please confirm this order. Thank you!`
                 />
               </div>
 
-              {/* Delivery Location */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Delivery Address *</h3>
-                <textarea
-                  value={deliveryAddress}
-                  onChange={(e) => setDeliveryAddress(e.target.value)}
-                  placeholder="Enter full delivery address"
-                  rows={3}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#e91e8c] resize-none"
-                />
-                <p className="text-orange-500 text-sm mt-1">Available in limited cities*</p>
-              </div>
-
               {/* Delivery date and time */}
               <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -255,6 +245,16 @@ Please confirm this order. Thank you!`
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <button
+                  onClick={handleCart}
+                  className={`flex-1 py-3 rounded-lg font-bold transition-all text-lg border-2 ${
+                    carted
+                      ? 'bg-pink-50 border-[#e91e8c] text-[#e91e8c]'
+                      : 'bg-[#e91e8c] border-[#e91e8c] hover:bg-[#c2185b] text-white'
+                  }`}
+                >
+                  {carted ? 'Added to My Cart' : 'Add to Cart'}
+                </button>
                 <button
                   onClick={handleBuyNow}
                   className="flex-1 py-3 rounded-lg font-bold transition-all text-white text-lg bg-[#25D366] hover:bg-[#1da851] flex items-center justify-center gap-2"

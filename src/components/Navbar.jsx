@@ -93,10 +93,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
-  const { cartItems, cartCount, wishlistCount } = useCart()
+  const [wishlistOpen, setWishlistOpen] = useState(false)
+  const { cartItems, cartCount, wishlistItems, wishlistCount } = useCart()
   const navigate = useNavigate()
   const searchRef = useRef(null)
   const cartRef = useRef(null)
+  const wishlistRef = useRef(null)
 
   // Live search results
   const searchResults = searchVal.trim().length > 0
@@ -114,6 +116,9 @@ export default function Navbar() {
       }
       if (cartRef.current && !cartRef.current.contains(e.target)) {
         setCartOpen(false)
+      }
+      if (wishlistRef.current && !wishlistRef.current.contains(e.target)) {
+        setWishlistOpen(false)
       }
     }
 
@@ -139,6 +144,18 @@ export default function Navbar() {
     navigate(`/search?q=${encodeURIComponent(cake.name)}`)
     setSearchVal('')
     setShowDropdown(false)
+  }
+
+  const handleCartOrder = () => {
+    if (cartItems.length === 0) return
+    const total = cartItems.reduce((sum, item) => {
+      const price = parseInt((item.price || '').replace(/[^\d]/g, ''), 10)
+      return sum + (Number.isNaN(price) ? 0 : price)
+    }, 0)
+    const items = cartItems.map((item, index) => `${index + 1}. ${item.name} - ${item.price || 'Price TBD'}`).join('\n')
+    const message = `Hello! I want to order these cakes:\n\n${items}\n\nTotal: ₹${total.toLocaleString()}\n\nPlease confirm availability.`
+    window.open(getWhatsAppUrl(message), '_blank')
+    setCartOpen(false)
   }
 
   return (
@@ -260,10 +277,10 @@ export default function Navbar() {
                   ))}
                   {/* View all button */}
                   <button
-                    onClick={handleSearch}
+                    onClick={() => { setCartOpen(false); navigate('/cart') }}
                     className="w-full px-4 py-3 text-center text-sm text-[#e91e8c] font-semibold font-sans hover:bg-pink-50 transition-colors"
                   >
-                    View all results for "{searchVal}" →
+                    View Cart
                   </button>
                 </>
               )}
@@ -323,7 +340,16 @@ export default function Navbar() {
                 <>
                   <ul className="max-h-64 overflow-y-auto divide-y divide-gray-50">
                     {cartItems.filter(item => item && item.name).map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 px-4 py-3">
+                      <li key={i}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setCartOpen(false)
+                            navigate(`/cake/${item.name.toLowerCase().replace(/\s+/g, '-')}`)
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-pink-50 transition-colors"
+                          title={`Open ${item.name}`}
+                        >
                         <div className="w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
                           <img
                             src={item.img || 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=100&auto=format&fit=crop&q=60'}
@@ -338,13 +364,25 @@ export default function Navbar() {
                             <p className="text-xs text-[#e91e8c] font-sans font-bold mt-0.5">{item.price}</p>
                           )}
                         </div>
+                        </button>
                       </li>
                     ))}
                   </ul>
                   <div className="px-4 py-3 border-t border-gray-100">
-                    <button className="w-full bg-[#e91e8c] hover:bg-[#c2185b] transition-colors text-white text-sm font-semibold py-2.5 rounded-full font-sans">
-                      View Cart
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => { setCartOpen(false); navigate('/cart') }}
+                        className="flex-1 border border-[#e91e8c] text-[#e91e8c] hover:bg-pink-50 transition-colors text-sm font-semibold py-2.5 rounded-full font-sans"
+                      >
+                        View Cart
+                      </button>
+                      <button
+                        onClick={handleCartOrder}
+                        className="flex-1 bg-green-500 hover:bg-green-600 transition-colors text-white text-sm font-semibold py-2.5 rounded-full font-sans"
+                      >
+                        Order Now
+                      </button>
+                    </div>
                   </div>
                 </>
               )}
@@ -352,18 +390,73 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Wishlist icon */}
-        <button className="relative flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 hover:border-red-400 hover:text-red-500 text-gray-600 transition-all">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-          {wishlistCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-              {wishlistCount}
-            </span>
+        {/* Wishlist icon and dropdown */}
+        <div ref={wishlistRef} className="relative">
+          <button
+            type="button"
+            onClick={() => setWishlistOpen(open => !open)}
+            aria-label="Open wishlist"
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 hover:border-red-400 hover:text-red-500 text-gray-600 transition-all"
+          >
+            <svg className="w-5 h-5" fill={wishlistCount > 0 ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            {wishlistCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {wishlistCount}
+              </span>
+            )}
+          </button>
+
+          {wishlistOpen && (
+            <div className="absolute right-0 top-full mt-2 w-[min(20rem,calc(100vw-2rem))] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50">
+              <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                <span className="font-serif text-gray-800 font-semibold text-sm">
+                  My Wishlist ({wishlistCount})
+                </span>
+                <button type="button" onClick={() => setWishlistOpen(false)} className="text-gray-400 hover:text-gray-600">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {wishlistItems.length === 0 ? (
+                <p className="px-4 py-8 text-center text-gray-400 text-sm">Your wishlist is empty</p>
+              ) : (
+                <ul className="max-h-72 overflow-y-auto divide-y divide-gray-50">
+                  {wishlistItems.filter(item => item && item.name).map((item, i) => (
+                    <li key={`${item.name}-${i}`}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setWishlistOpen(false)
+                          navigate(`/cake/${item.name.toLowerCase().replace(/\s+/g, '-')}`)
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-pink-50 transition-colors"
+                      >
+                        <div className="w-12 h-12 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                          <img
+                            src={item.img || 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=100&auto=format&fit=crop&q=60'}
+                            alt={item.name}
+                            className="w-full h-full object-contain"
+                            onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=100&auto=format&fit=crop&q=60' }}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold text-gray-800 font-serif truncate">{item.name}</p>
+                          {item.price && <p className="text-xs text-[#e91e8c] font-bold mt-0.5">{item.price}</p>}
+                        </div>
+                        <span className="text-red-500 text-lg" aria-hidden="true">♥</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           )}
-        </button>
+        </div>
 
         <button
           type="button"

@@ -1,17 +1,24 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const CartContext = createContext()
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([])
-  const [wishlistItems, setWishlistItems] = useState([])
+  const [cartItems, setCartItems] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('cakeshop-cart')) || [] } catch { return [] }
+  })
+  const [wishlistItems, setWishlistItems] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('cakeshop-wishlist')) || [] } catch { return [] }
+  })
 
   const cartCount = cartItems.length
   const wishlistCount = wishlistItems.length
 
+  useEffect(() => localStorage.setItem('cakeshop-cart', JSON.stringify(cartItems)), [cartItems])
+  useEffect(() => localStorage.setItem('cakeshop-wishlist', JSON.stringify(wishlistItems)), [wishlistItems])
+
   const addToCart = (item) => {
     if (!item || !item.name) return
-    setCartItems(prev => [...prev, item])
+    setCartItems(prev => prev.some(c => c && c.name === item.name) ? prev : [...prev, item])
   }
 
   const removeFromCart = (item) => {
@@ -25,7 +32,7 @@ export function CartProvider({ children }) {
 
   const addToWishlist = (item) => {
     if (!item || !item.name) return
-    setWishlistItems(prev => [...prev, item])
+    setWishlistItems(prev => prev.some(w => w && w.name === item.name) ? prev : [...prev, item])
   }
 
   const removeFromWishlist = (item) => {

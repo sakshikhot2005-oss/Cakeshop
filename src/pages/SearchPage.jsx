@@ -62,19 +62,19 @@ function ReelCard({ url, thumb }) {
 
 function CakeCard({ img, name, price, category }) {
   const navigate = useNavigate()
-  const [wishlisted, setWishlisted] = useState(false)
-  const [carted, setCarted] = useState(false)
-  const { addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+  const { cartItems, wishlistItems, addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+  const wishlisted = wishlistItems.some(item => item?.name === name)
+  const carted = cartItems.some(item => item?.name === name)
 
   const handleCart = (e) => {
     e.stopPropagation()
-    if (carted) { removeFromCart({ img, name, price }); setCarted(false) }
-    else { addToCart({ img, name, price }); setCarted(true) }
+    if (carted) removeFromCart({ img, name, price })
+    else addToCart({ img, name, price, category })
   }
   const handleWishlist = (e) => {
     e.stopPropagation()
-    if (wishlisted) { removeFromWishlist({ img, name, price }); setWishlisted(false) }
-    else { addToWishlist({ img, name, price }); setWishlisted(true) }
+    if (wishlisted) removeFromWishlist({ img, name, price })
+    else addToWishlist({ img, name, price, category })
   }
 
   const handleCardClick = () => {
@@ -88,7 +88,7 @@ function CakeCard({ img, name, price, category }) {
       className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100 group flex flex-col cursor-pointer hover:scale-105 transition-transform duration-300"
     >
       <div className="relative bg-white h-64 flex-shrink-0 flex items-center justify-center overflow-hidden rounded-t-xl">
-        <div className="absolute top-2 left-0 right-0 flex justify-between px-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-2 left-0 right-0 flex justify-between px-2 z-10">
           <button onClick={handleCart} title="Add to Cart"
             className={`w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-all
               ${carted ? 'bg-[#e91e8c] text-white' : 'bg-white text-gray-500 hover:bg-[#e91e8c] hover:text-white'}`}>
