@@ -92,10 +92,6 @@ export default function HeroSection() {
           Every cake is homemade, eggless and personally handcrafted by owners Seema and Jatin
         </p>
 
-        <button className="self-start bg-[#e91e8c] hover:bg-[#c2185b] transition-colors text-white text-sm font-semibold px-8 py-3 rounded-full shadow-lg">
-          Buy Now
-        </button>
-
         {/* Dot indicators */}
         <div className="flex items-center gap-2 mt-8">
           {slides.map((_, i) => (
