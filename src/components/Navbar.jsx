@@ -479,8 +479,8 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-white border-t border-gray-100 shadow-xl px-4 py-4 space-y-2 text-sm text-gray-700">
           <button onClick={() => { setMegaOpen(true); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">Custom Cakes</button>
-          <a href="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">About us</a>
-          <a href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">Contact us</a>
+          <button type="button" onClick={() => { navigate('/about'); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">About us</button>
+          <button type="button" onClick={() => { navigate('/contact'); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">Contact us</button>
           <a href={getWhatsAppUrl('Hello! I would like to place an order for a cake.')} target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center justify-center gap-2 bg-green-500 text-white font-semibold px-4 py-3 rounded-full">Order Now!</a>
         </div>
       )}
