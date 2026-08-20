@@ -2,7 +2,7 @@ import TopBar from '../components/TopBar'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useCart } from '../context/CartContext'
-import { getWhatsAppUrl } from '../data/contact'
+import { shareOrderWithImages } from '../data/contact'
 
 export default function CartPage() {
   const { cartItems, removeFromCart, cartCount } = useCart()
@@ -12,13 +12,13 @@ export default function CartPage() {
     return sum + (isNaN(num) ? 0 : num)
   }, 0)
 
-  const handleWhatsAppOrder = () => {
+  const handleWhatsAppOrder = async () => {
     if (cartItems.length === 0) return
     const itemList = cartItems
       .map((item, i) => `${i + 1}. ${item.name} - ${item.price || 'Price TBD'}`)
       .join('\n')
     const msg = `Hello! I want to order the following cakes:\n\n${itemList}\n\nTotal: ₹${total.toLocaleString()}\n\nPlease confirm availability.`
-    window.open(getWhatsAppUrl(msg), '_blank')
+    await shareOrderWithImages(msg, cartItems.map(item => item.img))
   }
 
   return (

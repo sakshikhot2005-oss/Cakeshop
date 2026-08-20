@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { allCakes } from '../data/allCakes'
 import { cakeFlavors } from '../data/cakeFlavors'
 import { useCart } from '../context/CartContext'
-import { getWhatsAppUrl } from '../data/contact'
+import { shareOrderWithImages } from '../data/contact'
 
 export default function CakeDetailPage() {
   const { cakeName } = useParams()
@@ -59,7 +59,7 @@ export default function CakeDetailPage() {
     )
   }
 
-  const handleBuyNow = () => {
+  const handleBuyNow = async () => {
     if (!deliveryDate || !deliveryTime) {
       alert('Please select delivery date and time')
       return
@@ -85,7 +85,7 @@ SKU: ${displayCake.name.toLowerCase().replace(/\s+/g, '')}buttsk
 Please confirm this order. Thank you!`
 
     // Open WhatsApp
-    window.open(getWhatsAppUrl(orderMessage), '_blank')
+    await shareOrderWithImages(orderMessage, [displayCake.img])
   }
 
   const handleWishlist = () => {
