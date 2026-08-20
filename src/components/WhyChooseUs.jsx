@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
       </h2>
 
       {/* Cards — full width, equal spacing */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12">
+      <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12">
         {features.map((f, i) => (
           <div
             key={i}

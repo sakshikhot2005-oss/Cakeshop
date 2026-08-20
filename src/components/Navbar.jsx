@@ -160,14 +160,14 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      <nav className="bg-white shadow-sm px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <nav className="bg-white shadow-sm px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
 
         {/* Logo */}
-        <div className="flex items-center gap-3 min-w-fit">
+        <div className="flex items-center gap-2 min-w-0">
           <img
             src={secondLogo}
             alt="Dolcino Cakes Logo"
-            className="h-14 sm:h-20 w-auto object-contain"
+            className="h-12 sm:h-20 w-auto max-w-[135px] sm:max-w-none object-contain"
           />
           <div className="leading-tight">
             <div className="text-2xl font-bold font-serif leading-none text-[#e91e8c]"></div>
@@ -220,7 +220,7 @@ export default function Navbar() {
         </div>
 
         {/* Search bar with live dropdown */}
-        <div ref={searchRef} className="relative order-3 w-full lg:order-none lg:w-auto">
+        <div ref={searchRef} className="relative order-4 w-full lg:order-none lg:w-auto lg:flex-1 lg:max-w-[220px]">
             <form onSubmit={handleSearch} className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-gray-50 w-full lg:w-[220px]">
             <input
               type="text"
@@ -483,7 +483,7 @@ export default function Navbar() {
       {/* Mega Menu Dropdown */}
       {megaOpen && (
         <div className="absolute top-full left-0 right-0 z-50 bg-[#1a0505] shadow-2xl border-t-2 border-[#e91e8c]">
-          <div className="max-h-[70vh] overflow-y-auto max-w-screen-xl mx-auto px-4 sm:px-8 py-6 sm:py-8 grid grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
+          <div className="max-h-[70vh] overflow-y-auto max-w-screen-xl mx-auto px-4 sm:px-8 py-6 sm:py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
             {Object.entries(megaMenu).map(([category, items]) => (
               <div key={category}>
                 {/* Category heading */}
@@ -493,7 +493,7 @@ export default function Navbar() {
                 {/* Items */}
                 <ul className="space-y-1.5">
                   {items.map(([left, right], i) => (
-                    <li key={i} className="flex gap-4">
+                    <li key={i} className="grid grid-cols-2 gap-3">
                       {left && (
                         <a href="#" className="text-gray-300 text-xs hover:text-[#e91e8c] transition-colors whitespace-nowrap font-sans flex-1">
                           {left}

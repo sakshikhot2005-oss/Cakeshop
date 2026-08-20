@@ -320,7 +320,7 @@ Please confirm this order. Thank you!`
           {categoryCakes.length > 1 && (
             <div>
               <h2 className="text-2xl font-serif text-gray-800 mb-6">Other {displayCake.category} Cakes</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                 {categoryCakes.map((c, i) => (
                   <div
                     key={i}

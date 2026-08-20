@@ -16,17 +16,17 @@ export default function SplashScreen({ onFinish }) {
   useEffect(() => {
     const t = []
     line1.split('').forEach((_, i) =>
-      t.push(setTimeout(() => setL1(i + 1), 500 + i * 110)))
-    t.push(setTimeout(() => setShowLogo(true), 500 + line1.length * 110 + 300))
-    const l2s = 500 + line1.length * 110 + 900
+      t.push(setTimeout(() => setL1(i + 1), 150 + i * 45)))
+    t.push(setTimeout(() => setShowLogo(true), 850))
+    const l2s = 1100
     line2.split('').forEach((_, i) =>
-      t.push(setTimeout(() => setL2(i + 1), l2s + i * 120)))
-    const l3s = l2s + line2.length * 120 + 400
+      t.push(setTimeout(() => setL2(i + 1), l2s + i * 50)))
+    const l3s = 2000
     line3.split('').forEach((_, i) =>
-      t.push(setTimeout(() => setL3(i + 1), l3s + i * 140)))
-    t.push(setTimeout(() => setShowTagline(true), l3s + line3.length * 140 + 500))
-    t.push(setTimeout(() => setExiting(true),     l3s + line3.length * 140 + 2500))
-    t.push(setTimeout(() => onFinish(),            l3s + line3.length * 140 + 3800))
+      t.push(setTimeout(() => setL3(i + 1), l3s + i * 60)))
+    t.push(setTimeout(() => setShowTagline(true), 2600))
+    t.push(setTimeout(() => setExiting(true), 3300))
+    t.push(setTimeout(() => onFinish(), 4000))
     return () => t.forEach(clearTimeout)
   }, [onFinish])
 
@@ -106,13 +106,13 @@ export default function SplashScreen({ onFinish }) {
           {line1.split('').map((c, i) => (
             <span key={i} style={{
               display: 'inline-block',
-              fontSize: '42px',
+              fontSize: 'clamp(24px, 8vw, 42px)',
               fontFamily: 'Playfair Display, Georgia, serif',
               fontWeight: 700,
               fontStyle: 'italic',
               color: '#fff',
               textShadow: '0 4px 20px rgba(150,0,80,0.5), 0 0 30px rgba(255,255,255,0.3)',
-              letterSpacing: '4px',
+              letterSpacing: 'clamp(1px, 1vw, 4px)',
               whiteSpace: c === ' ' ? 'pre' : 'normal',
               opacity: i < l1 ? 1 : 0,
               transform: i < l1
@@ -154,7 +154,7 @@ export default function SplashScreen({ onFinish }) {
         <div style={{ display:'flex', minHeight:'72px' }}>
           {line2.split('').map((c, i) => (
             <Letter key={i} char={c} visible={i < l2}
-              size="60px" italic={false}
+              size="clamp(36px, 12vw, 60px)" italic={false}
               color="#ffffff"
               shadow="0 4px 24px rgba(150,0,80,0.4), 0 0 40px rgba(255,255,255,0.15)"
             />

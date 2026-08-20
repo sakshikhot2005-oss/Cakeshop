@@ -113,7 +113,7 @@ export default function EngagementPage() {
 
       {/* Cards Grid — 4 per row */}
       <section className="py-8 sm:py-12 px-4 sm:px-10 bg-[#f9f9f9]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
           {engagementCakes.map((cake, i) => (
             <CakeCard key={i} img={cake.img} name={cake.name} price={cake.price} />
           ))}

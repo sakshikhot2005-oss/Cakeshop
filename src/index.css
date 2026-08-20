@@ -14,6 +14,7 @@
   body {
     background: #fff;
     overflow-x: hidden;
+    min-width: 320px;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -24,6 +25,28 @@
   button,
   a {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  @media (max-width: 639px) {
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
+    }
+
+    input,
+    textarea,
+    select {
+      min-width: 0;
+    }
   }
 
   #root {

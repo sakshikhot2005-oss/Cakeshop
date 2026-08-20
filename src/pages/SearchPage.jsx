@@ -41,7 +41,7 @@ function ReelCard({ url, thumb }) {
       </div>
 
       {/* Video thumbnail with play button */}
-      <div className="relative flex-1 bg-gray-900 overflow-hidden" style={{ height: '220px' }}>
+      <div className="relative flex-1 bg-gray-900 overflow-hidden h-52 sm:h-[220px]">
         <img
           src={thumb}
           alt="reel thumbnail"
@@ -168,7 +168,7 @@ export default function SearchPage() {
                   <>Showing <span className="text-[#e91e8c] font-semibold">{results.length}</span> cakes</>
                 )}
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7 mb-8 sm:mb-12">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7 mb-8 sm:mb-12">
                 {results.map((cake, i) => (
                   <CakeCard key={i} {...cake} />
                 ))}
