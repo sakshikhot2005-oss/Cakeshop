@@ -163,7 +163,12 @@ export default function Navbar() {
       <nav className="bg-white shadow-sm px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
 
         {/* Logo */}
-        <div className="flex items-center gap-2 min-w-0">
+        <button
+          type="button"
+          aria-label="Go to Dolcino Cakes home page"
+          onClick={() => navigate('/')}
+          className="flex items-center gap-2 min-w-0 text-left"
+        >
           <img
             src={secondLogo}
             alt="Dolcino Cakes Logo"
@@ -173,7 +178,7 @@ export default function Navbar() {
             <div className="text-2xl font-bold font-serif leading-none text-[#e91e8c]"></div>
             <div className="text-sm text-gray-500 font-sans tracking-widest"></div>
           </div>
-        </div>
+        </button>
 
         {/* Nav links */}
         <div className="hidden lg:flex items-center gap-6 text-sm text-gray-700 font-medium">
@@ -182,7 +187,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               className={`flex items-center gap-1 hover:text-[#e91e8c] transition-colors ${megaOpen ? 'text-[#e91e8c]' : ''}`}
-              onClick={() => setMegaOpen(!megaOpen)}
+              onClick={() => setMegaOpen(open => !open)}
               onBlur={() => setTimeout(() => setMegaOpen(false), 200)}
             >
               Custom Cakes
@@ -473,7 +478,7 @@ export default function Navbar() {
 
       {mobileOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 z-40 bg-white border-t border-gray-100 shadow-xl px-4 py-4 space-y-2 text-sm text-gray-700">
-          <button onClick={() => { setMegaOpen(open => !open); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">Custom Cakes</button>
+          <button onClick={() => { setMegaOpen(true); setMobileOpen(false) }} className="block w-full text-left px-3 py-3 rounded-lg hover:bg-pink-50">Custom Cakes</button>
           <a href="/about" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">About us</a>
           <a href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg hover:bg-pink-50">Contact us</a>
           <a href={getWhatsAppUrl('Hello! I would like to place an order for a cake.')} target="_blank" rel="noopener noreferrer" className="flex sm:hidden items-center justify-center gap-2 bg-green-500 text-white font-semibold px-4 py-3 rounded-full">Order Now!</a>
@@ -495,12 +500,12 @@ export default function Navbar() {
                   {items.map(([left, right], i) => (
                     <li key={i} className="grid grid-cols-2 gap-3">
                       {left && (
-                        <a href="#" className="text-gray-300 text-xs hover:text-[#e91e8c] transition-colors whitespace-nowrap font-sans flex-1">
+                        <a href="#" className="text-gray-300 text-xs hover:text-[#e91e8c] transition-colors font-sans break-words min-w-0">
                           {left}
                         </a>
                       )}
                       {right && (
-                        <a href="#" className="text-gray-300 text-xs hover:text-[#e91e8c] transition-colors whitespace-nowrap font-sans flex-1">
+                        <a href="#" className="text-gray-300 text-xs hover:text-[#e91e8c] transition-colors font-sans break-words min-w-0">
                           {right}
                         </a>
                       )}

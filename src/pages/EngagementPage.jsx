@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import TopBar from '../components/TopBar'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -24,17 +23,17 @@ const engagementCakes = [
 ]
 
 function CakeCard({ img, name, price }) {
-  const [wishlisted, setWishlisted] = useState(false)
-  const [carted, setCarted] = useState(false)
-  const { addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+  const { cartItems, wishlistItems, addToCart, removeFromCart, addToWishlist, removeFromWishlist } = useCart()
+  const carted = cartItems.some(item => item?.name === name)
+  const wishlisted = wishlistItems.some(item => item?.name === name)
 
   const handleCart = () => {
-    if (carted) { removeFromCart({ img, name, price }); setCarted(false) }
-    else { addToCart({ img, name, price }); setCarted(true) }
+    if (carted) removeFromCart({ img, name, price })
+    else addToCart({ img, name, price })
   }
   const handleWishlist = () => {
-    if (wishlisted) { removeFromWishlist({ img, name, price }); setWishlisted(false) }
-    else { addToWishlist({ img, name, price }); setWishlisted(true) }
+    if (wishlisted) removeFromWishlist({ img, name, price })
+    else addToWishlist({ img, name, price })
   }
 
   return (
@@ -44,7 +43,7 @@ function CakeCard({ img, name, price }) {
       <div className="relative overflow-hidden bg-white h-64 flex-shrink-0">
 
         {/* Icons — visible on hover */}
-        <div className="absolute top-2 left-0 right-0 flex justify-between px-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-2 left-0 right-0 flex justify-between px-2 z-10">
           {/* Add to Cart — left */}
           <button
             onClick={handleCart}
